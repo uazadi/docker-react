@@ -1,5 +1,6 @@
 # Build phase
-FROM node:alpine as builder
+# FROM node:alpine as builder (removing the aliasing because of AWS bug)
+FROM node:alpine
 WORKDIR '/app'
 COPY package.json .
 RUN npm install
@@ -12,5 +13,6 @@ FROM nginx
 # the PORT MAPPING. However when this command will be read in Elastic 
 # Beanstalk, it will be able to perfom automatically the PORT MAPPING
 EXPOSE 80
-COPY  --from=builder /app/build /usr/share/nginx/html
+# COPY  --from=builder /app/build /usr/share/nginx/html (removing the aliasing because of AWS bug)
+COPY --from=0 /app/build /usr/share/nginx/html
 # the nginx start-up command is already set in the base image used
