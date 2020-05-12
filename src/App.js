@@ -9,7 +9,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
 		Hey there!<br />
-		This is a simple web application deploied in AWS  
+		This is a simple web application deployed in AWS  
         </p>
         <a
           className="App-link"
